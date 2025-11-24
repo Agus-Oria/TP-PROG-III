@@ -27,7 +27,7 @@ const nav2html =
             <ul>
                 <li><a href="#/menuAdmin">Inscripciones</a></li>
                 <li><a href="#/crearCurso">Crear Curso</a></li>
-                <li><a href="#/menuAdmin">Usuarios</a></li>
+                <li><a href="#/usuarios">Usuarios</a></li>
             </ul>
         </div>`
 

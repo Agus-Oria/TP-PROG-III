@@ -1,3 +1,5 @@
+import { registrar } from "./registrarse.js";
+
 const tablahtml =`<div class="table-container">
     <button id="btn-crear">Crear Usuario</button>
 
@@ -37,9 +39,9 @@ const navhtml = `<nav class="login-nav">
 </nav>`
 
 const urlUsuarios = "https://691f571531e684d7bfc96d5d.mockapi.io/usuarios";
+let tabla = null
 
-
-export function usuarios(){
+export function listaUsuarios(){
     let cp = document.getElementById("cp");
     let nav = document.getElementById("nav")
     let nav2 = document.getElementById("nav2") 
@@ -52,7 +54,7 @@ export function usuarios(){
         localStorage.removeItem("usuarioId")
         localStorage.removeItem("rol")})
     let btn2 = document.getElementById("btn-crear")
-
+    btn2.addEventListener("click",crearUsuario)
     cargarUsuarios()
 }
 
@@ -67,7 +69,7 @@ async function cargarUsuarios() {
             `
     });
 
-    new DataTable("#tablaUsuarios", {
+    tabla = new DataTable("#tablaUsuarios", {
         responsive:true,
         data : usuarios,
         columns: [
@@ -77,9 +79,6 @@ async function cargarUsuarios() {
             { data: 'action', "orderable":false }
             
         ],
-        drawCallback: function() {
-        enlazarBoton();  
-        },
         deferRender: true,
         retrieve: true,
         processing: false,
@@ -109,12 +108,132 @@ async function cargarUsuarios() {
                             
         }
     })
+    enlazarBoton()
 }
+
+const editarhtml = `<div class="form-curso">
+            <h4>Editar Usuario</h4>
+            <div>
+                <label>Nombre:</label>
+                <input type="text" id="nombre" required>
+            </div>
+            <div>
+                <label>Email:</label>
+                <input type="text" id="email" required>
+            </div>
+            <div>
+                <label>Contraseña:</label>
+                <input type="password" id="password" required>
+            </div>
+            <div class="form-boton">
+                <button type="button" id="cancelar">Cancelar</button>
+                <button type="button" id="actualizar">Actualizar</button>
+            </div>`
 
 
 function enlazarBoton() {
-    let btn = document.querySelectorAll(".btn-editar")
-    btn.forEach(b => {
-        b.addEventListener("click",() => {})
-    })
+
+    tabla.on("click", ".btn-editar", async function(e) {
+
+        let id = e.target.dataset.id;
+
+        // Cambiar contenido al formulario
+        let cp = document.getElementById("cp");
+        cp.innerHTML = editarhtml;
+
+        // Obtener usuario
+        let res = await fetch(urlUsuarios);
+        let usuarios = await res.json();
+        let usuario = usuarios.find(u => u.id == id);
+
+        if (!usuario) {
+            console.error("Usuario no encontrado");
+            return;
+        }
+
+        // Rellenar inputs
+        document.getElementById("nombre").value = usuario.name;
+        document.getElementById("email").value = usuario.email;
+        document.getElementById("password").value = usuario.password;
+
+        // Guardar ID en el botón
+        document.getElementById("actualizar").dataset.id = id;
+        document.getElementById("actualizar").addEventListener("click", actualizarUsuario);
+        document.getElementById("cancelar").addEventListener("click", listaUsuarios);
+    });
 }
+
+async function actualizarUsuario(e) {
+
+    // El ID está guardado en el botón
+    const id = e.target.dataset.id;
+
+    // Tomamos los valores modificados del formulario
+    let nombre = document.getElementById("nombre").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
+
+    // Validación básica
+    if (!nombre || !email || !password) {
+        alert("Todos los campos son obligatorios");
+        return;
+    }
+
+    // Armamos el objeto actualizado
+    const datosActualizados = {
+        name: nombre,
+        email: email,
+        password: password
+    };
+
+    // Enviar a MockAPI usando PUT
+    let res = await fetch(`${urlUsuarios}/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(datosActualizados)
+    });
+
+    if (!res.ok) {
+        alert("Error al actualizar el usuario");
+        return;
+    }
+
+    alert("Usuario actualizado correctamente");
+
+    // Volver al listado
+    listaUsuarios();
+}
+
+const crearUsuariohtml = `<div class="form-curso">
+            <h4>Crear Usuario</h4>
+            <div>
+                <label>Nombre:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div>
+                <label>Email:</label>
+                <input type="text" id="email" required>
+            </div>
+            <div>
+                <label>Contraseña:</label>
+                <input type="password" id="password" required>
+            </div>
+            <div>
+                <label>Repetir Contraseña:</label>
+                <input type="password" id="repetirPassword" required>
+            </div>
+            <div class="form-boton">
+                <button type="button" id="cancelar">Cancelar</button>
+                <button type="button" id="crear">Crear</button>
+            </div>`
+
+
+function crearUsuario(){
+    let cp = document.getElementById("cp")
+    cp.innerHTML = crearUsuariohtml
+
+    document.getElementById("crear").addEventListener("click", registrar);
+    document.getElementById("cancelar").addEventListener("click", listaUsuarios);
+}
+
+

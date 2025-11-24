@@ -42,7 +42,7 @@ export function menuRegistrar() {
     btn.addEventListener("click",registrar)
 }
 
-async function registrar() {
+export async function registrar() {
     let name = document.getElementById("name").value;
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
@@ -87,7 +87,9 @@ async function registrar() {
         }
 
         alert("Usuario creado con éxito");
-        window.location.hash = "#login";
+        if (localStorage.getItem("rol") === "admin"){
+            window.location.href = "#/usuarios"}
+        else {window.location.href = "#/login"}
 
     } catch (error) {
         console.error("Error:", error);

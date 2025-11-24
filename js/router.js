@@ -5,7 +5,7 @@ import { menuAdmin } from "./menuAdmin.js";
 import { menuUsuario } from "./menuUsuario.js";
 import { menuMisCursos } from "./misCursos.js";
 import {menuRegistrar} from "./registrarse.js"
-import { usuarios } from "./usuarios.js";
+import { listaUsuarios } from "./usuarios.js";
 
 
 
@@ -27,7 +27,7 @@ export function Router(){
     }else if(hash==='#/menuAdmin'){
         menuAdmin()
     } else if(hash==='#/usuarios'){
-        usuarios()
+        listaUsuarios()
     } else {
         setLogin();
     }
