@@ -93,3 +93,22 @@
 h1 {
     font-size: 5rem;
 }
+
+.nav-sesion {
+    font-size: 1.6rem;
+    letter-spacing: 0.2rem;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    border: 1px solid ;
+
+}
+
+@media (max-height: 700px) {
+    
+.nav2-usuario a {
+    color: black;
+    font-weight: 800;
+    font-size: 1.5rem;
+
+}
+}

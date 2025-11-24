@@ -1,3 +1,6 @@
+
+
+
 .form-curso{
     display: flex;
     width: 60%;
@@ -68,4 +71,70 @@
     border-radius: 0.4rem;
     background-color: rgb(255, 68, 68);
     margin-right: 1rem;
+}
+
+@media (max-width: 700px) {
+    .form-curso div {
+    border: solid 1px;
+    padding: 1rem;
+}
+
+.form-curso label {
+    font-size: 2rem;
+    display: block;
+}
+
+.form-curso h4 {
+    font-size: 3rem;
+}
+
+.form-curso input {
+    font-size: 1.5rem;
+}
+
+.form-curso .form-boton {
+    border-style: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#form-boton {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 0.2rem;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    background-color: rgb(255, 68, 68);
+}
+
+#actualizar {
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.2rem;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    background-color: rgb(255, 68, 68);
+    margin-left: 1rem;
+}
+
+#cancelar {
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.2rem;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    background-color: rgb(255, 68, 68);
+    margin-right: 1rem;
+}
+
+#crear {
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.2rem;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    background-color: rgb(255, 68, 68);
+    margin-right: 1rem;
+}
 }

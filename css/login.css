@@ -3,6 +3,7 @@
     margin:0;
     box-sizing: border-box;
 }
+
 body {
     background-image: url("../img/login-fondo.jpg");
 }
@@ -66,3 +67,53 @@ body {
     border-radius: 0.4rem;
     background-color: rgb(255, 68, 68);
 }
+
+#footer {
+    display: flex;
+    height: 5vh;
+    background-color:rgb(255, 68, 68);
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+
+
+@media (max-height: 700px) {
+    .login-nav a {
+    text-decoration: none;
+    color: black;
+    font-weight: 800;
+    font-size: 2rem;
+}
+.nav2-usuario a {
+    color: black;
+    font-weight: 800;
+    font-size: 1rem;
+
+}
+}
+
+@media (max-width: 450px) {
+    .login-nav a {
+    text-decoration: none;
+    color: black;
+    font-weight: 800;
+    font-size: 2.5rem;
+}
+
+}
+

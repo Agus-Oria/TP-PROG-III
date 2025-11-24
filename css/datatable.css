@@ -1,4 +1,4 @@
-/* Contenedor general */
+
 .table-container {
     width: 90%;
     margin: 30px auto;
@@ -8,7 +8,7 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Título */
+
 .table-title {
     font-size: 22px;
     font-weight: bold;
@@ -16,7 +16,7 @@
     color: #333;
 }
 
-/* Tabla */
+
 table.dataTable {
     border-collapse: collapse ;
     width: 100%;
@@ -25,7 +25,7 @@ table.dataTable {
     background: white;
 }
 
-/* Encabezado */
+
 table.dataTable thead {
     background: #4a90e2;
     color: white;
@@ -37,7 +37,7 @@ table.dataTable thead th {
     font-weight: 600;
 }
 
-/* Filas */
+
 table.dataTable tbody tr {
     transition: background 0.2s ease;
 }
@@ -50,14 +50,14 @@ table.dataTable tbody tr:hover {
     background: #e4f0ff;
 }
 
-/* Celdas */
+
 table.dataTable td {
     padding: 10px;
     font-size: 14px;
     color: #333;
 }
 
-/* Botón editar */
+
 .btn-editar {
     background: #ffb300;
     color: white;
@@ -72,7 +72,7 @@ table.dataTable td {
     background: #e89d00;
 }
 
-/* Botón crear */
+
 #btn-crear {
     background: #28a745;
     color: white;
@@ -88,7 +88,7 @@ table.dataTable td {
     background: #1f7f33;
 }
 
-/* Buscador y paginación DataTables */
+
 .dataTables_filter input {
     border: 1px solid #ccc;
     padding: 6px;
@@ -101,7 +101,7 @@ table.dataTable td {
     border-radius: 6px;
 }
 
-/* Paginación */
+
 .dataTables_paginate .paginate_button {
     padding: 6px 12px;
     margin: 2px;
@@ -117,4 +117,10 @@ table.dataTable td {
 
 .dataTables_paginate .paginate_button:hover {
     background: #d2d2d2 ;
+}
+
+@media (max-width: 400px){
+    #tablaUsuarios{
+        width: 300px !important;
+    }
 }
