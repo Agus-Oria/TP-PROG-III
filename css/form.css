@@ -1,0 +1,41 @@
+.form-curso{
+    display: flex;
+    width: 60%;
+    border: 1px solid;
+    flex-direction: column;
+    background-color: antiquewhite;
+}
+
+.form-curso div {
+    border: solid 1px;
+    padding: 1rem;
+}
+
+.form-curso label {
+    font-size: 3rem;
+    display: block;
+}
+
+.form-curso h4 {
+    font-size: 5rem;
+}
+
+.form-curso input {
+    font-size: 3rem;
+}
+
+.form-curso .form-boton {
+    border-style: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#form-boton {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 0.2rem;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    background-color: rgb(255, 68, 68);
+}

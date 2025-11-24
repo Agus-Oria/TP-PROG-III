@@ -1,0 +1,120 @@
+/* Contenedor general */
+.table-container {
+    width: 90%;
+    margin: 30px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Título */
+.table-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Tabla */
+table.dataTable {
+    border-collapse: collapse ;
+    width: 100%;
+    border-radius: 10px ;
+    overflow: hidden;
+    background: white;
+}
+
+/* Encabezado */
+table.dataTable thead {
+    background: #4a90e2;
+    color: white;
+}
+
+table.dataTable thead th {
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* Filas */
+table.dataTable tbody tr {
+    transition: background 0.2s ease;
+}
+
+table.dataTable tbody tr:nth-child(even) {
+    background: #f7faff;
+}
+
+table.dataTable tbody tr:hover {
+    background: #e4f0ff;
+}
+
+/* Celdas */
+table.dataTable td {
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Botón editar */
+.btn-editar {
+    background: #ffb300;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-editar:hover {
+    background: #e89d00;
+}
+
+/* Botón crear */
+#btn-crear {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: 0.2s;
+}
+
+#btn-crear:hover {
+    background: #1f7f33;
+}
+
+/* Buscador y paginación DataTables */
+.dataTables_filter input {
+    border: 1px solid #ccc;
+    padding: 6px;
+    border-radius: 6px;
+    margin-left: 8px;
+}
+
+.dataTables_length select {
+    padding: 4px;
+    border-radius: 6px;
+}
+
+/* Paginación */
+.dataTables_paginate .paginate_button {
+    padding: 6px 12px;
+    margin: 2px;
+    border-radius: 6px ;
+    border: none ;
+    background: #eaeaea ;
+}
+
+.dataTables_paginate .paginate_button.current {
+    background: #4a90e2 ;
+    color: white ;
+}
+
+.dataTables_paginate .paginate_button:hover {
+    background: #d2d2d2 ;
+}
