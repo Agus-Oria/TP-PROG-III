@@ -82,6 +82,18 @@ async function cargarCursos() {
             return;
         }
 
+        let resIns= await fetch(url2);      
+        let inscripciones = await resIns.json();
+
+        let existe = inscripciones.some(i =>
+            i.idUsuario == idUsuario && i.idCurso == idCurso
+        );
+
+        if (existe) {
+            alert("Ya estás inscripto en este curso");
+            return;
+        }
+
         let inscripcion = {
             idUsuario: idUsuario,
             idCurso: idCurso,
