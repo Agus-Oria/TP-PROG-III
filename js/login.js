@@ -55,7 +55,7 @@ export function setLogin(){
     }
     else {
         if (localStorage.getItem("rol") === "admin"){
-            window.location.href = "#/menuAdmin"}
+            window.location.href = "#/academiaweb"}
         else {window.location.href = "#/menuUsuario"}
     }
 }
@@ -74,7 +74,7 @@ async function iniciarSesion(){
                     localStorage.setItem("rol", usuario.role);
                     encontrado = true
                     if (usuario.role === "admin"){
-                        window.location.href = "#/menuAdmin"
+                        window.location.href = "#/academiaweb"
                     }else {
                         window.location.href = "#/menuUsuario"
                     }

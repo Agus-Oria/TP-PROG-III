@@ -1,5 +1,6 @@
 
 import { formCurso } from "./crearCurso.js";
+import { menuDashboard } from "./dashboard.js";
 import { setLogin } from "./login.js";
 import { menuAdmin } from "./menuAdmin.js";
 import { menuUsuario } from "./menuUsuario.js";
@@ -28,6 +29,8 @@ export function Router(){
         menuAdmin()
     } else if(hash==='#/usuarios'){
         listaUsuarios()
+    }else if(hash==='#/academiaweb'){
+        menuDashboard()
     } else {
         setLogin();
     }

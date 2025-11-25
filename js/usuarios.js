@@ -42,6 +42,7 @@ const urlUsuarios = "https://691f571531e684d7bfc96d5d.mockapi.io/usuarios";
 let tabla = null
 
 export function listaUsuarios(){
+    if (localStorage.getItem("rol") === "admin"){
     let cp = document.getElementById("cp");
     let nav = document.getElementById("nav")
     let nav2 = document.getElementById("nav2") 
@@ -56,6 +57,8 @@ export function listaUsuarios(){
     let btn2 = document.getElementById("btn-crear")
     btn2.addEventListener("click",crearUsuario)
     cargarUsuarios()
+    }else {alert("Inicia Sesion")
+            window.location.href = "#/login"}
 }
 
 
@@ -137,11 +140,9 @@ function enlazarBoton() {
 
         let id = e.target.dataset.id;
 
-        // Cambiar contenido al formulario
         let cp = document.getElementById("cp");
         cp.innerHTML = editarhtml;
 
-        // Obtener usuario
         let res = await fetch(urlUsuarios);
         let usuarios = await res.json();
         let usuario = usuarios.find(u => u.id == id);
@@ -151,12 +152,10 @@ function enlazarBoton() {
             return;
         }
 
-        // Rellenar inputs
         document.getElementById("nombre").value = usuario.name;
         document.getElementById("email").value = usuario.email;
         document.getElementById("password").value = usuario.password;
 
-        // Guardar ID en el botón
         document.getElementById("actualizar").dataset.id = id;
         document.getElementById("actualizar").addEventListener("click", actualizarUsuario);
         document.getElementById("cancelar").addEventListener("click", listaUsuarios);
@@ -165,28 +164,23 @@ function enlazarBoton() {
 
 async function actualizarUsuario(e) {
 
-    // El ID está guardado en el botón
     const id = e.target.dataset.id;
 
-    // Tomamos los valores modificados del formulario
     let nombre = document.getElementById("nombre").value.trim();
     let email = document.getElementById("email").value.trim();
     let password = document.getElementById("password").value.trim();
 
-    // Validación básica
     if (!nombre || !email || !password) {
         alert("Todos los campos son obligatorios");
         return;
     }
 
-    // Armamos el objeto actualizado
     const datosActualizados = {
         name: nombre,
         email: email,
         password: password
     };
 
-    // Enviar a MockAPI usando PUT
     let res = await fetch(`${urlUsuarios}/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -200,7 +194,6 @@ async function actualizarUsuario(e) {
 
     alert("Usuario actualizado correctamente");
 
-    // Volver al listado
     listaUsuarios();
 }
 

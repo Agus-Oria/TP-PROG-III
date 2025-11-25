@@ -42,6 +42,7 @@ const navhtml = `<nav class="login-nav">
 
 
 export function formCurso() {
+    if (localStorage.getItem("rol") === "admin"){
     let cp = document.getElementById("cp");
     let nav = document.getElementById("nav")
     let nav2 = document.getElementById("nav2") 
@@ -55,6 +56,8 @@ export function formCurso() {
         localStorage.removeItem("rol")})
     let btn2 = document.getElementById("form-boton")
     btn2.addEventListener("click",crearCurso)
+    }else {alert("Inicia Sesion")
+            window.location.href = "#/login"}
 }   
 
 async function crearCurso() {

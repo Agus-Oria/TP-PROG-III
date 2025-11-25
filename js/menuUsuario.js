@@ -52,10 +52,10 @@ async function cargarCursos() {
         let idCurso = curso.id
         let div = document.createElement("div")
         div.innerHTML =`
-            <p class="curso-nombre">${name}</p>
-            <p class="curso-descripcion">${descripcion}</p>
-            <p class="curso-duracion">${duracion}</p>
-            <p class="curso-cupos">${cupos}</p>
+            <p class="curso-nombre">Nombre: ${name}</p>
+            <p class="curso-descripcion">Descripcion: ${descripcion}</p>
+            <p class="curso-duracion">Duracion: ${duracion}</p>
+            <p class="curso-cupos">Cupos: ${cupos}</p>
             <div>
             <button class="curso-boton" data-idcurso = "${idCurso}">Inscribirse</button>
             </div>

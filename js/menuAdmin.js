@@ -23,7 +23,8 @@ const navhtml = `<nav class="login-nav">
 
 
 export async function menuAdmin() {
-    let cp = document.getElementById("cp");
+    if (localStorage.getItem("rol") === "admin"){
+        let cp = document.getElementById("cp");
     let nav = document.getElementById("nav")
     let nav2 = document.getElementById("nav2") 
     cp.innerHTML = menuUsuariohtml
@@ -36,17 +37,19 @@ export async function menuAdmin() {
         localStorage.removeItem("rol")})
         
     cargarCursosAdmin()
+    }
+        else {alert("Inicia Sesion")
+            window.location.href = "#/login"}
+    
 }
 
 async function cargarCursosAdmin() {
     let lista = document.getElementById("lista-cursos");
     lista.innerHTML = "<p>Cargando inscripciones...</p>";
 
-    // Traer inscripciones
     let resIns = await fetch(url2);
     let inscripciones = await resIns.json();
 
-    // Filtrar solo las pendientes
     let pendientes = inscripciones.filter(ins => ins.estado === "pendiente");
 
     if (pendientes.length === 0) {
@@ -54,15 +57,13 @@ async function cargarCursosAdmin() {
         return;
     }
 
-    // Traer cursos
     let resCursos = await fetch(url);
     let cursos = await resCursos.json();
 
-    // Traer usuarios
     let resUsers = await fetch(url3);
     let usuarios = await resUsers.json();
 
-    lista.innerHTML = ""; // limpiar
+    lista.innerHTML = ""; 
 
     pendientes.forEach(ins => {
         let curso = cursos.find(c => c.id === ins.idCurso);
@@ -70,7 +71,6 @@ async function cargarCursosAdmin() {
 
         if (!curso || !user) return;
 
-        // Crear card
         let div = document.createElement("div");
         div.className = "curso";
 
@@ -88,21 +88,21 @@ async function cargarCursosAdmin() {
         lista.appendChild(div);
     });
 
-    // Botones aprobar
+
     document.querySelectorAll(".btn-aprobar").forEach(btn => {
         btn.addEventListener("click", async () => {
             let idIns = btn.dataset.id;
             await actualizarEstadoInscripcion(idIns, "aprobado");
-            cargarCursosAdmin(); // recargar
+            cargarCursosAdmin(); 
         });
     });
 
-    // Botones rechazar
+
     document.querySelectorAll(".btn-rechazar").forEach(btn => {
         btn.addEventListener("click", async () => {
             let idIns = btn.dataset.id;
             await actualizarEstadoInscripcion(idIns, "rechazado");
-            cargarCursosAdmin(); // recargar
+            cargarCursosAdmin(); 
         });
     });
 }
