@@ -34,7 +34,7 @@
 .curso{
     background-color: antiquewhite;
     border: solid 1px;
-    flex: 0 0 40rem;
+    flex: 0 0 35rem;
     height: 25rem;
     display: flex;
     flex-direction: column;
