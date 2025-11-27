@@ -13,7 +13,7 @@ const nav2html =
 
 const navhtml = `<nav class="login-nav">
         <div>
-            <a href="#/academiaweb">AcademiaWeb</a>
+            <a href="#/academiaWeb">AcademiaWeb</a>
         </div>
         <div class = "nav-sesion">
             <a href="#/login" id="cerrar-sesion">Cerrar Sesión</a>

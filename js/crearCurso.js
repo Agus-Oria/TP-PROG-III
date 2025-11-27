@@ -7,7 +7,7 @@ const formhtml = `<div class="form-curso">
                 <input type="text" id="nombre" required>
             </div>
             <div>
-                <label>descripcion:</label>
+                <label>Descripcion:</label>
                 <input type="text" id="descripcion" required>
             </div>
             <div>
@@ -87,5 +87,5 @@ async function crearCurso() {
 
     alert("Curso creado exitosamente!");
 
-    window.location.href = "#/menuAdmin";
+    window.location.href = "#/academiaweb";
 }

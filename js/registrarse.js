@@ -1,3 +1,5 @@
+import { listaUsuarios } from "./usuarios.js";
+
 const url = "https://691f571531e684d7bfc96d5d.mockapi.io/usuarios"
 
 const registrarhtml = `<div>
@@ -71,7 +73,8 @@ export async function registrar() {
     let nuevoUsuario = {
         name: name,
         email: email,
-        password: password
+        password: password,
+        role: "usuario"
     };
 
     try {
@@ -88,7 +91,7 @@ export async function registrar() {
 
         alert("Usuario creado con éxito");
         if (localStorage.getItem("rol") === "admin"){
-            window.location.href = "#/usuarios"}
+            listaUsuarios()}
         else {window.location.href = "#/login"}
 
     } catch (error) {
